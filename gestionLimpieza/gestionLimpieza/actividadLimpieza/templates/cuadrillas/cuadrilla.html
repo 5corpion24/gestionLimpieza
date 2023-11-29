@@ -1,0 +1,40 @@
+{% extends 'components/navbar.html' %}
+
+{% block content %}
+
+{% load crispy_forms_tags %}
+<div class="bg-success bg-opacity-25" style="height: 690px" >
+    <br>
+    <h3 class="text-center mb-5"> REGISTRO DE CUADRILLA</h3>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="card mx-auto" style="width: 30rem;">
+            <div class="card-body">
+                {{ cuadrilla_form | crispy }}
+        <button class="btn btn-sm btn-primary float-end" type="submit">Guardar</button>
+        </div>
+    </div>
+    </form>
+
+    <script>
+        let contadorEmpleados = 1;
+
+        function agregarEmpleado() {
+            var original = document.getElementById('empleado-form-0'); 
+            var clone = original.cloneNode(true);
+            clone.id = 'empleado-form-' + contadorEmpleados; 
+
+
+            var select = clone.getElementsByTagName('select')[0];
+            select.name = 'empleado' + contadorEmpleados; 
+
+            original.parentNode.appendChild(clone);
+
+            contadorEmpleados++;
+        }
+        </script>
+
+
+
+{% endblock %}

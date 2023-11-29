@@ -1,0 +1,15 @@
+{% extends 'components/navbar.html' %}
+{% block content %}
+<div class="bg-success bg-opacity-25" style="height: 800px">
+    <br>
+    <h2 class="text-center mb-5" >Editar Cuadrilla</h2>
+    <form method="post">
+        <div class="card mx-auto" style="width: 30rem;">
+            <div class="card-body">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-success  container d-flex justify-content-center" type="submit">Guardar Cambios</button>
+        </div>
+    </div>
+    </form>
+{% endblock %}
